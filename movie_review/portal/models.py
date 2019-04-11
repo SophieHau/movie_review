@@ -5,6 +5,7 @@ class Movie(models.Model):
 	title = models.CharField(max_length=50)
 	year = models.CharField(max_length=4, default=None)
 	image = models.TextField()
+	plot = models.TextField(default=None, null=True, blank=True)
 
 class Review(models.Model):
 

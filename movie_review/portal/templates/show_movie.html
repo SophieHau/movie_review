@@ -11,9 +11,40 @@
 			    <div class="col-md-8">
 			      <div class="card-body">
 			        <h1 class="card-title">{{ movie.title }} ({{ movie.year }})</h1>
-			      
+			        <p></p>
+
+			      			    <div class="col-md-11 ml-5">
+
+				<h3 class="card-title mt-5">Reviews: <a href="{% url 'add_review' movie.id %}" class="btn btn-outline-info mr-2 float-right" tabindex="-1" role="button" aria-disabled="true">Add</a></h3>
+			    <div class="accordion mt-3" id="accordionExample">
+			      	{% for review in reviews %}					  				      	
+  				<div>
+    				<div class="card bg-light mb-3 shadow-sm" id="headingOne">
+      				<h2 class="mb-0">
+        			<button class="btn" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapseOne">
+          				{{ review.title }} {% if review.rating <= 4 or review.rating == 0 %}<span class="badge badge-danger ml-3">{{ review.rating }}/10</span> {% elif review.rating > 5 and review.rating <= 7 %} 
+    						<span class="badge badge-warning ml-3">{{ review.rating }}/10</span>
+    					{% elif review.rating > 7 %}
+							<span class="badge badge-success ml-3"> 
+    						{{ review.rating }}/10</span></li>
+						{% endif %}
+        			</button>
+      				</h2>
+    				</div>
+
+    				<div id="collapse{{ forloop.counter }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      				<div class="card-body">
+        				<p class="card-text">"{{ review.text }}"</p>
+			        	<footer class="blockquote-footer float-right">{{ review.author.username }}</footer>
+			        	<p class="card-text"><small class="text-muted">{{ review.pub_date }}</small></p>
+      				</div>
+   				 </div>
+    				{% endfor %}
+  				</div>
+			</div>
+ <script type="text/javascript">$('.collapse').collapse()</script> 
 				
-				<ul class="list-group-item list-group-flush mt-5">
+				<!-- <ul class="list-group-item list-group-flush mt-5">
 					<h5 class="card-title ">Reviews<a href="{% url 'add_review' movie.id %}" class="btn btn-outline-info ml-3" tabindex="-1" role="button" aria-disabled="true">Add</a></h5>
 			       {% for review in reviews %}
     				<a href="{% url 'show_review' review.id %}"><li class="list-group-item ml-1">{{ review.title }}
@@ -24,7 +55,7 @@
     						{{ review.rating }}/10</span></li></a>
 					{% endif %}
 					  {% endfor %}
-					</ul>
+					</ul> -->
 			    </div>
 			    </div>
 			  </div>

@@ -2,17 +2,14 @@
 {% block content %}
 
 <div class="container">
-	<div class="row mt-5">
-			<h1>Movies</h1>
-	</div>
-	<div class="row justify-content-md-between">
+	<div class="row justify-content-md-between mt-5">
 			{% for movie in movies %}
 			<div class="card mb-3" style="width: 18rem;">
 			  <img src="{{ movie.image }}" class="card-img-top">
 			  <div class="card-body">
 			    <h5 class="card-title">{{ movie.title }}</h5>
 			    <p class="card-text">{{ movie.year }}</p>
-			    <a href="{% url 'show_movie' movie.id %}" class="btn btn-primary">Reviews</a>
+			    <a href="{% url 'show_movie' movie.id %}" class="btn btn-primary float-right">Reviews</a>
 			  </div>
 			</div>
 			{% endfor %}

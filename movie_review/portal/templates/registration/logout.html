@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid mt-5">
   <div class="container">
     <h1 class="display-4">You have been logged out</h1>
+      <p class="">Click her to log back in: </p><a class="d-inline btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
   </div>
 </div>
 
