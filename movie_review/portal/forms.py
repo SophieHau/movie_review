@@ -9,5 +9,5 @@ class ReviewForm(ModelForm):
 	class Meta:
 		model = Review
 		pub_date = timezone.now()
-		fields = ['title', 'text', 'movie', 'pub_date', 'author']
+		fields = ['title', 'text', 'movie', 'pub_date', 'author', 'rating']
 		widgets = {'movie': forms.HiddenInput, 'author': forms.HiddenInput}

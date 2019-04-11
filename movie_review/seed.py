@@ -24,11 +24,12 @@ def generate_movie_object():
 def generate_review():
 	for i in range(0, 31):
 		movie = random.choice(Movie.objects.all())
-		title = fake.text(20)
+		title = fake.text(30)
 		text = fake.text(350)
 		author = random.choice(User.objects.all())
 		pub_date = timezone.now()
-		r = Review(movie=movie, title=title, text=text, author=author, pub_date=pub_date)
+		rating = random.randint(0, 10)
+		r = Review(movie=movie, title=title, text=text, author=author, pub_date=pub_date, rating=rating)
 		r.save()
 
 def generate_user():

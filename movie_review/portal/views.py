@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 
 
@@ -47,3 +48,21 @@ def add_review(request, movie_id):
 				'movie': movie
 			})
 	return render(request, 'login')
+
+
+def search_movie(request):
+	context = None
+	if request.method != 'POST':
+		return redirect('index')
+
+	text = request.POST.get('search', '')
+	results = Movie.objects.filter(
+		Q(title__icontains=text))
+	for movie in results:
+		reviews = Review.objects.filter(movie=movie)
+
+	return render(request, 'search_results.html', {
+		'results': results,
+		'text': text,
+		'reviews': reviews
+		})

@@ -2,8 +2,18 @@
 {% block content %}
 
 <div class="container">
-	<div class="row mt-5">
+	<div class="row mt-5 justif-content-between">
+		<div class="col-2">
+			<img src="{{ review.movie.image }}" class="card-img-top">
+		</div>
 		<div class="col">
+			<h1>{{ review.movie.title }} ({{ review.movie.year }}){% if review.rating <= 4 %}<span class="badge badge-danger ml-3">{{ review.rating }}/10</span> {% elif review.rating > 5 and review.rating <= 7 %} 
+    						<span class="badge badge-warning ml-3">{{ review.rating }}/10</span>
+    					{% elif review.rating > 7 %}
+					<span class="badge badge-success ml-3"> 
+    						{{ review.rating }}/10</span></li></a>
+					{% endif %}</h1>
+
 			<div class="card mb-3">
 			  <div class="row no-gutters">
 			    <div class="col-md-8">

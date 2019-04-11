@@ -6,19 +6,25 @@
 		<div class="col">
 			  <div class="row no-gutters">
 			    <div class="col-md-4">
-			      <img src="{{ movie.image }}" class="card-img" alt="...">
+			      <img src="{{ movie.image }}" class="card-img-top">
 			    </div>
 			    <div class="col-md-8">
 			      <div class="card-body">
-			        <h1 class="card-title">{{ movie.title }}</h1>
-			        <p class="card-text">({{ movie.year }})</p>
+			        <h1 class="card-title">{{ movie.title }} ({{ movie.year }})</h1>
 			      
-				<ul class="list-group-item list-group-flush mt-5">
+				
+				<!-- <ul class="list-group-item list-group-flush mt-5">
 					<h5 class="card-title ">Reviews<a href="{% url 'add_review' movie.id %}" class="btn btn-outline-info ml-3" tabindex="-1" role="button" aria-disabled="true">Add</a></h5>
 			       {% for review in reviews %}
-    				<a href="{% url 'show_review' review.id %}"><li class="list-group-item ml-1">{{ review.title }}</li></a>
+    				<a href="{% url 'show_review' review.id %}"><li class="list-group-item ml-1">{{ review.title }}
+    					{% if review.rating <= 4 %}<span class="badge badge-danger ml-3">{{ review.rating }}/10</span> {% elif review.rating > 5 and review.rating <= 7 %} 
+    						<span class="badge badge-warning ml-3">{{ review.rating }}/10</span>
+    					{% elif review.rating > 7 %}
+					<span class="badge badge-success ml-3"> 
+    						{{ review.rating }}/10</span></li></a>
+					{% endif %}
 					  {% endfor %}
-					</ul>
+					</ul> -->
 			    </div>
 			    </div>
 			  </div>

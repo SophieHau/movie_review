@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<div class="row mt-5">
+			<h1 class="card-title ">Search results for: "{{ text }}"</h1> 
+			<ul class="list-group-flush mt-5">
+			       {% for movie in results %}
+    				<a href="{% url 'show_movie' movie.id %}"><li class="list-group-item ml-1"><img src="{{ movie.image }}"> <div class="d-inline ml-3">{{ movie.title }} ({{ movie.year }})</div></li></a>
+    				<li class="list-group-item ml-1"></li>
+					  {% endfor %}
+					</ul>
+	</div>
+</div>
+
+{% endblock %}
