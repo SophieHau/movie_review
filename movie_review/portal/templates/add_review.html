@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<form method="POST" action="{% url 'add_review' movie.id %}">
+				{% csrf_token %}
+				<div class="form-group">
+				    <label>Title:</label>
+				    <div>
+				    {{ form.title }}
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label>Review:</label>
+				    <div>
+				  {{ form.text }}
+				  </div>
+				</div>
+				<div class="form-group" hidden>
+				    <label>Movie:</label>
+				    <div>
+				  {{ form.movie }}
+				  </div>
+				</div>
+				<div class="form-group" hidden>
+				    <label>Publication date:</label>
+				    <div>
+				  {{ form.pub_date }}
+				  </div>
+				</div>
+				<div class="form-group">
+				    <label>Author:</label>
+				  {{ form.author }}
+				  </div>
+				</div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
