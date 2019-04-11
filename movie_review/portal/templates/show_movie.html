@@ -4,25 +4,24 @@
 <div class="container">
 	<div class="row mt-5">
 		<div class="col">
-			<div class="card mb-3">
 			  <div class="row no-gutters">
 			    <div class="col-md-4">
 			      <img src="{{ movie.image }}" class="card-img" alt="...">
 			    </div>
 			    <div class="col-md-8">
 			      <div class="card-body">
-			        <h5 class="card-title">{{ movie.title }}</h5>
-			        <p class="card-text">{{ movie.year }}</p>
-			      </div>
-			      <h5 class="card-title ml-4">Reviews<a href="{% url 'add_review' movie.id %}" class="btn btn-outline-info ml-3" tabindex="-1" role="button" aria-disabled="true">Add</a></h5>
-				<ul class="list-group list-group-flush">
+			        <h1 class="card-title">{{ movie.title }}</h1>
+			        <p class="card-text">({{ movie.year }})</p>
+			      
+				<ul class="list-group-item list-group-flush mt-5">
+					<h5 class="card-title ">Reviews<a href="{% url 'add_review' movie.id %}" class="btn btn-outline-info ml-3" tabindex="-1" role="button" aria-disabled="true">Add</a></h5>
 			       {% for review in reviews %}
-    				<li class="list-group-item">{{ review.title }}</li>
+    				<a href="{% url 'show_review' review.id %}"><li class="list-group-item ml-1">{{ review.title }}</li></a>
 					  {% endfor %}
 					</ul>
 			    </div>
+			    </div>
 			  </div>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -2,10 +2,12 @@ from django import forms
 from django.forms import ModelForm
 from .models import Review
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 class ReviewForm(ModelForm):
-	movie = forms.HiddenInput()
-	pub_date = timezone.now()
 	class Meta:
 		model = Review
+		pub_date = timezone.now()
 		fields = ['title', 'text', 'movie', 'pub_date', 'author']
+		widgets = {'movie': forms.HiddenInput, 'author': forms.HiddenInput}

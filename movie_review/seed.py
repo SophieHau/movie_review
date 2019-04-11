@@ -16,7 +16,7 @@ top = ia.get_top250_movies() [1:11]
 def generate_movie_object():
 	for movie in top:
 		ia.update(movie)
-		m = Movie(title=movie['title'], year=movie['year'], image=movie['cover url'])
+		m = Movie(title=movie['title'], year=movie['year'], image=movie['cover'])
 		m.save()
 
 
